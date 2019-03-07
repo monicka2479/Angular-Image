@@ -1,0 +1,41 @@
+
+<div *ngIf="appState == 'default'">
+<div>
+     <form (submit)="addStudent()">
+        <table border="3"  >
+                <tr>
+                        <td><input class="form-control" type="text" [(ngModel)]="newStudent.studentId" name="studentId"/>{{newStudent.studentId}}</td>
+                        <td><input class="form-control" type="text" [(ngModel)]="newStudent.name" name="name"/>{{newStudent.name}}</td>
+                        <td><input class="form-control" type="text" [(ngModel)]="newStudent.marks" name="marks"/>{{newStudent.marks}}</td>
+                        <td><button class="form-control btn btn-success">Add</button></td>
+                </tr>
+              
+                <tr *ngFor="let student of students">   
+                    <td > <span (click)="editStudent(student)">  <input class="form-control" type="label" value="{{student.studentId}}"/></span></td>
+                    <td ><input class="form-control" type="label" value="{{student.name}}"/> </td>
+                    <td ><input class="form-control" type="label" value="{{student.marks}}"/> </td>
+                                   <td ><img src="data:image/jpeg;base64,{{student.b64}}| safe" id="photo-id"/></td>
+
+                    <td ><button class="form-control btn btn-warning" (click)="deleteStudent(student)"  value="Add">Delete</button></td>
+               
+                </tr>
+          
+        </table>
+         </form>
+</div>
+</div>
+
+<div *ngIf="appState == 'edit'">
+            <form (submit)="updateStudent(student)">
+              
+
+  <tr>
+         
+                        <td><input class="form-control" type="text"  value="{{student.studentId}}" [(ngModel)]="newStudent.studentId" name="studentId" />{{newStudent.studentId}}</td>
+                        <td><input class="form-control" type="text"  value="{{student.name}}" [(ngModel)]="newStudent.name" name="name"/>{{newStudent.name}}</td>
+                        <td><input class="form-control" type="text"  value="{{student.marks}}" [(ngModel)]="newStudent.marks" name="marks"/>{{newStudent.marks}}</td>
+                        <td><button class="form-control btn btn-success">Update</button></td>
+                </tr>
+            </form>
+</div>
+
